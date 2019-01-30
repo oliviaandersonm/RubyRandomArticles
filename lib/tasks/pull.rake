@@ -12,17 +12,25 @@ SOURCE_STRING = SOURCES.join(',')
 desc "Pulls articles from News API"
 task :pull => :environment do
     newsapi = News.new(Rails.application.secrets.news_api_key)
-    all_articles = newsapi.get_everything(sources: SOURCE_STRING, language: 'en')
-    all_articles.each do |a|
-        a_new = Article.create
-        a_new.title = a.title
-        a_new.author = a.author
-        a_new.source = a.name
-        a_new.description = a.description 
-        a_new.url = a.url 
-        a_new.image = a.urlToImage
-        a_new.pub_date = a.publishedAt 
-        #a_new.content = a.content
-        a_new.save
-    end
+    10.times do 
+        all_articles = newsapi.get_everything(sources: SOURCE_STRING, language: 'en')
+        all_articles.each do |a|
+            a_new = Article.create
+            a_new.title = a.title
+            a_new.author = a.author
+            a_new.source = a.name
+            a_new.description = a.description 
+            a_new.url = a.url 
+            a_new.image = a.urlToImage
+            a_new.pub_date = a.publishedAt 
+            #a_new.content = a.content
+            a_new.save
+        end
+        #delete old records
+        first_id = Article.first.id
+        articles_to_kill = Article.find((first_id..(first_id + 19)).to_a)
+        articles_to_kill.each do |k|
+            k.destroy
+        end
+    end 
 end
