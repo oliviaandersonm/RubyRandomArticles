@@ -1,12 +1,67 @@
 <head>
   <title>Article Index(Homepage)</title>
+  
+  <%= stylesheet_link_tag "articles", media: "all", "data-turbolinks-track" => "reload" %>
+  <%= javascript_include_tag "application", media: "all", 'data-turbolinks-track' => "reload" %>
 </head>
 <body>
-  <h1>Article Index</h1>
+  .
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col" id="date">
+        <h3><%= Time.now.strftime("%A, %B %d")  %></h3>
+      </div>
+    </div>
+  </div>
 
-  <% @articles.each do |ar| %>
-    <p><%= ar.title %></p>
-  <% end %>
+
+<div class="contain">
+
+  <div class="row">
+    <div class="row__inner">
+
+    <% @articles.each do |a| %>
+      <%= link_to a.url do %>
+      <div class="tile">
+        <div class="tile__details">
+            <p id="title"><%= a.title %></p>
+            <p id="source"><%= a.source %></p>
+            <p id="date"><%= a.pub_date.strftime("%b %e, %l:%M %p")  %></p>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!--<a class="prev" onclick="shiftSlides(-1)">&#10094;</a> -->
+
+<!--<div class="slideshow-container">-->
+
+  <!-- Full-width images with number and caption text -->
+<!--  <% @articles.each do |ar| %>-->
+<!--  <div class="slides">-->
+<!--      <div class="col-sm-4">-->
+<!--        <p><%= ar.title %></p>-->
+<!--      </div>-->
+<!--  </div>-->
+<!--  <% end %>-->
+<!--</div>-->
+
+  
+<!--  <a class="next" onclick="shiftSlides(1)">&#10095;</a>-->
+
+<!--<br>-->
+
+<!--<div id="test">-->
+  
+<!--</div>-->
+
+  
 </body>
 
 
