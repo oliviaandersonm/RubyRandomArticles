@@ -21,11 +21,15 @@
     <div class="row__inner">
 
     <% @articles.each do |a| %>
+      <%= link_to a.url do %>
       <div class="tile">
         <div class="tile__details">
             <p id="title"><%= a.title %></p>
+            <p id="source"><%= a.source %></p>
+            <p id="date"><%= a.pub_date.strftime("%b %e, %l:%M %p")  %></p>
         </div>
       </div>
+      <% end %>
     <% end %>
 
     </div>
