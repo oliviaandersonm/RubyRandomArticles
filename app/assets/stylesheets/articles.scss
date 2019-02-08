@@ -9,7 +9,7 @@ $iconSize: 50px;
 $growFactor: 1.5; 
 
 $moveLeft: -($tileWidth * ($growFactor - 1) / 2);
-$moveRight: $tileWidth * ($growFactor - 1);
+$moveRight: $tileWidth * ($growFactor);
 
 .jumbotron {
     background-color: white;
@@ -19,16 +19,6 @@ $moveRight: $tileWidth * ($growFactor - 1);
     text-align: center;
 }
 
-
-// body, html {
-//   background: white;
-//   font-family: 'Open Sans', sans-serif;
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   width: 100%;
-// }
 
 * { box-sizing: border-box }
 
@@ -105,7 +95,7 @@ $moveRight: $tileWidth * ($growFactor - 1);
 .row__inner:hover .tile {
 
   // Fade out every tile
-  opacity: .3;
+  opacity: .5;
 
   // And then grow the current tile and make it opaque again
   &:hover {
